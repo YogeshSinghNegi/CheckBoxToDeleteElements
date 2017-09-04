@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="s4T-d5-b2N">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Custom Table View ClassVC-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="CustomTableViewClass_ID" id="BYZ-38-t0r" customClass="CustomTableViewClassVC" customModule="CheckBoxToDeleteElements" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9xZ-pu-sO2"/>
+                        <viewControllerLayoutGuide type="bottom" id="0dk-Kg-RGf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sze-y3-PJ5">
+                                <rect key="frame" x="0.0" y="64" width="375" height="523"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellForRowClass_ID" id="fFR-Ha-7Xv" customClass="CellForRowClass" customModule="CheckBoxToDeleteElements" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fFR-Ha-7Xv" id="Zqr-LQ-py8">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoH-bH-ESb">
+                                                    <rect key="frame" x="50" y="9.5" width="48" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKo-sd-gzy">
+                                                    <rect key="frame" x="314" y="2" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="GVk-b1-NiC"/>
+                                                        <constraint firstAttribute="width" constant="40" id="txR-ws-7Uq"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="checkBoxImageBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PpE-Yz-oOs"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eoH-bH-ESb" firstAttribute="leading" secondItem="Zqr-LQ-py8" secondAttribute="leading" constant="50" id="HkF-dc-8gZ"/>
+                                                <constraint firstItem="fKo-sd-gzy" firstAttribute="centerY" secondItem="Zqr-LQ-py8" secondAttribute="centerY" id="ItY-k4-uVv"/>
+                                                <constraint firstItem="fKo-sd-gzy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eoH-bH-ESb" secondAttribute="trailing" constant="8" symbolic="YES" id="OpJ-QM-cyY"/>
+                                                <constraint firstAttribute="trailing" secondItem="fKo-sd-gzy" secondAttribute="trailing" constant="21" id="blR-z0-tMR"/>
+                                                <constraint firstItem="eoH-bH-ESb" firstAttribute="centerY" secondItem="Zqr-LQ-py8" secondAttribute="centerY" id="bzB-Tp-Bai"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageBtnName" destination="fKo-sd-gzy" id="O2F-TK-QYo"/>
+                                            <outlet property="nameLabel" destination="eoH-bH-ESb" id="Qd7-A2-hKs"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1b-2z-2dL">
+                                <rect key="frame" x="-0.5" y="587" width="375" height="80"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Zz-Vi-t2T"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sze-y3-PJ5" firstAttribute="top" secondItem="9xZ-pu-sO2" secondAttribute="bottom" id="3ib-pj-XE8"/>
+                            <constraint firstItem="s1b-2z-2dL" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="3oq-bT-sS0"/>
+                            <constraint firstAttribute="trailing" secondItem="sze-y3-PJ5" secondAttribute="trailing" id="5kZ-Kg-KSr"/>
+                            <constraint firstItem="sze-y3-PJ5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="P65-hg-6sr"/>
+                            <constraint firstItem="s1b-2z-2dL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TPm-l6-2e3"/>
+                            <constraint firstItem="0dk-Kg-RGf" firstAttribute="top" secondItem="s1b-2z-2dL" secondAttribute="bottom" id="YOX-1G-FN6"/>
+                            <constraint firstItem="s1b-2z-2dL" firstAttribute="top" secondItem="sze-y3-PJ5" secondAttribute="bottom" id="Zl4-hP-UKv"/>
+                            <constraint firstItem="0dk-Kg-RGf" firstAttribute="top" secondItem="sze-y3-PJ5" secondAttribute="bottom" constant="80" id="biB-FJ-dtc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="FFj-6I-89o">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="eb0-vD-hoD">
+                            <connections>
+                                <action selector="navigationItemBtnTapped:" destination="BYZ-38-t0r" id="r6A-4Z-aEs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="customTableView" destination="sze-y3-PJ5" id="wxC-Ay-Pwg"/>
+                        <outlet property="deleteBtnName" destination="s1b-2z-2dL" id="ihe-0p-VG1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="455.19999999999999" y="123.68815592203899"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MGk-Xg-7A5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="s4T-d5-b2N" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jcN-iX-CGo">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Bdz-sT-e5t"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Vu-SC-ASd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-367" y="124"/>
+        </scene>
+    </scenes>
+</document>
