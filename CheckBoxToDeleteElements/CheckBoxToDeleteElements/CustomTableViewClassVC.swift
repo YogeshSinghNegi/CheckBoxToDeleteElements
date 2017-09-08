@@ -17,7 +17,8 @@ class CustomTableViewClassVC: UIViewController {
 //=============================================================//
 //MARK: Stored Properties
 //=============================================================//
-
+    
+    // Array for displaying list of the TableView
     var nameArray = ["Yogesh","Arvind","Sajal","Vinay","Akshay","Negi","Kartik","Aman","Kumar","Verma"]
     
     var imageNameArray = [String]()
@@ -40,24 +41,18 @@ class CustomTableViewClassVC: UIViewController {
         self.navigationItem.title = "My Friends Zone"
         self.customTableView.delegate = self
         self.customTableView.dataSource = self
+        // Initially setting the Delete Button to Non-User Interactable
         self.deleteBtnName.isUserInteractionEnabled = false
         self.deleteBtnName.backgroundColor = UIColor.lightGray
+        // Setting the array value for all indices to "Blank"
         for tempIndex in 0..<self.nameArray.count{
             self.imageNameArray.insert("blank", at: tempIndex)
         }
+        self.navigationItem.rightBarButtonItem?.title = "Edit"
     }
     
 //=============================================================//
-//MARK: Dispose of any resources that can be recreated
-//=============================================================//
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-    }
-    
-//=============================================================//
-//MARK: Defining IBAction of Custom Delete Button
+//MARK: Defining IBActions
 //=============================================================//
     
     @IBAction func navigationItemBtnTapped(_ sender: UIBarButtonItem) {
@@ -84,8 +79,9 @@ class CustomTableViewClassVC: UIViewController {
     
     @IBAction func checkBoxImageBtnTapped(_ sender: UIButton) {
         
-        guard let tableCell = getCell(button: sender) as? CellForRowClass else{fatalError()}
-        guard let indexPath = self.customTableView.indexPath(for: tableCell) else {fatalError()}
+        guard let tableCell = getCell(button: sender) as? CellForRowClass else{ fatalError("Failed to load cell in getCell()") }
+        guard let indexPath = self.customTableView.indexPath(for: tableCell) else { fatalError("Failed to load indexPath in getCell()") }
+        // Set Checked image if the cell is selected and vice-versa
         if self.imageNameArray[indexPath.row] == "uncheck"{
             self.imageNameArray[indexPath.row] = "check"
         }
@@ -98,18 +94,26 @@ class CustomTableViewClassVC: UIViewController {
     @IBAction func deleteBtnTapped(_ sender: UIButton) {
         
         var tempArray = [String]()
+        var tempIndexArray = [IndexPath]()
         for temIndex in 0..<self.nameArray.count{
             if self.imageNameArray[temIndex] == "uncheck"{
+                // Storing the names which are not selected
                 tempArray.append(self.nameArray[temIndex])
             }
+            else{
+                // Storing indices of those names which are selected
+                tempIndexArray.append([0,temIndex])
+            }
         }
+        // Removing all elements from the arrays and storing only those names which are non selected
         self.nameArray.removeAll()
         self.imageNameArray.removeAll()
         for tempIndex in 0..<tempArray.count{
             self.nameArray.insert(tempArray[tempIndex], at: tempIndex)
             self.imageNameArray.insert("uncheck", at: tempIndex)
         }
-        self.customTableView.reloadData()
+        // Showing animation while deleting the selected names.
+        self.customTableView.deleteRows(at: tempIndexArray, with: .middle)
     }
     
 }
@@ -160,7 +164,7 @@ extension CustomTableViewClassVC: UITableViewDelegate,UITableViewDataSource{
                 cell = super_view
             }
         }
-        guard let tableCell = cell as? CellForRowClass else { fatalError() }
+        guard let tableCell = cell as? CellForRowClass else { fatalError("Cell Failed to load") }
         return tableCell
     }
     
